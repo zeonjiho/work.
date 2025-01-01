@@ -1,0 +1,124 @@
+body {
+  font-family: 'Pretendard variable', sans-serif;
+}
+
+.min-h-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--padding-x);
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--nav-height);
+}
+
+.logo {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-right: 2rem;
+}
+
+.button-primary, .button-secondary {
+  font-family: 'Pretendard variable', sans-serif;
+  margin-left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 0px solid var(--color-text);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-variation-settings: 'wght' 500;
+  color: var(--color-text);
+  background-color: transparent;
+  transition: background-color 0.2s ease, font-variation-settings 0.2s ease;
+}
+
+.button-primary:hover, .button-secondary:hover {
+  font-variation-settings: 'wght' 800;
+  background-color: var(--button-hover-color);
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--padding-y) var(--padding-x);
+  text-align: center;
+}
+
+.welcome-text {
+  font-family: 'Syne', sans-serif;
+  font-variation-settings: 'wght' 700;
+  font-size: 2.25rem;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .welcome-text {
+    font-size: 3rem;
+    letter-spacing: -0.025em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .welcome-text {
+    font-size: 3.75rem;
+  }
+}
+
+.sub-text {
+  margin-top: 0.5rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* 추가적인 반응형 스타일 */
+@media (max-width: 768px) {
+  .nav-wrapper {
+    flex-direction: column;
+  }
+
+  .login-button, .signup-button {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-text {
+    font-size: 1.75rem;
+  }
+
+  .sub-text {
+    font-size: 1rem;
+  }
+} 

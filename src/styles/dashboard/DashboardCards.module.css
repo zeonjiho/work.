@@ -1,0 +1,408 @@
+:root {
+  --theme-blue: #002aff;
+  --theme-blue-10: rgba(0, 42, 255, 0.1);
+  --theme-blue-20: rgba(0, 42, 255, 0.2);
+  --theme-blue-30: rgba(0, 42, 255, 0.3);
+  --Item-hover: rgba(255, 255, 255, 0.1);
+  --progress-low: #22c55e;    /* 초록색 */
+  --progress-medium: #eab308; /* 노란색 */
+  --progress-high: #ef4444;   /* 빨간색 */
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.card {
+  @apply rounded-2xl p-6 transition-all duration-200;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(60px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: fit-content;
+  transition: transform 0.5s;
+
+}
+
+.card:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.01);
+}
+
+.card:first-child {
+  grid-row: span 2;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .card:first-child {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  
+  .card:first-child {
+    grid-column: span 1;
+  }
+}
+
+.cardHeader {
+  @apply flex items-center justify-between mb-6;
+}
+
+.cardTitle {
+  @apply text-lg font-semibold flex items-center;
+  color: var(--color-text);
+  font-family: 'Syne', sans-serif;
+}
+
+.cardIcon {
+  @apply w-10 h-10 rounded-xl flex items-center justify-center;
+  background-color:rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.cardIcon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.cardContent {
+  @apply space-y-4;
+}
+
+/* 프로젝트 리스트 스타일 */
+.projectList {
+  @apply space-y-3;
+  max-height: 320px;
+  overflow-y: auto;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+}
+
+/* 호버하지 않을 때만 아래쪽 아이템 투명도 적용 */
+.projectList:not(:hover) .projectItem:nth-child(n+4) {
+  opacity: 0.5;
+}
+
+/* 호버 시 모든 아이템 완전히 보이게 */
+.projectList:hover .projectItem {
+  opacity: 1;
+}
+
+.projectItem {
+  @apply flex items-center justify-between p-3 rounded-lg;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  opacity: 1 !important;
+}
+
+.projectItem:hover {
+  background-color: var(--theme-blue-10);
+  border-color: var(--theme-blue-20);
+}
+
+.projectInfo {
+  @apply flex-1 mr-4;
+}
+
+.projectName {
+  @apply text-sm font-medium mb-2 block;
+  color: var(--color-text);
+  font-family: 'Source Code Pro', monospace;
+  transition: opacity 0.3s ease;
+}
+
+.progressBar {
+  @apply h-1.5 rounded-full overflow-hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.progressFill {
+  @apply h-full rounded-full transition-all duration-300;
+  /* backgroundColor는 인라인 스타일로 적용됨 */
+}
+
+.progressText {
+  @apply text-xs font-medium;
+  color: var(--color-text-secondary);
+  font-family: 'Source Code Pro', monospace;
+  transition: color 0.3s ease;
+}
+
+.projectItem:hover .progressText {
+  color: var(--color-text);
+}
+
+/* 예약 리스트 스타일 */
+.reservationList {
+  @apply space-y-3;
+}
+
+.reservationItem {
+  @apply flex items-center space-x-3 p-3 rounded-lg transition-all duration-200;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.reservationItem:hover {
+  background-color: var(--Item-hover);
+  border-color: var(--Item-hover);
+}
+
+.reservationType {
+  @apply px-3 py-1 rounded-lg text-xs font-medium;
+  background-color: var(--theme-blue);
+  color: var(--color-text);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.reservationInfo {
+  @apply flex flex-col;
+}
+
+.reservationName {
+  @apply text-sm font-medium;
+  color: var(--color-text);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.reservationTime {
+  @apply text-xs;
+  color: var(--color-text-secondary);
+  font-family: 'Source Code Pro', monospace;
+}
+
+/* 할 일 리스트 스타일 */
+.todoList {
+  @apply space-y-3;
+}
+
+.todoItem {
+  @apply flex items-center space-x-3 p-3 rounded-lg transition-all duration-200;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.todoItem:hover {
+  background-color: var(--theme-blue-10);
+  border-color: var(--Item-hover);
+}
+
+.todoCheckbox {
+  @apply w-5 h-5 rounded border-2 cursor-pointer transition-colors duration-200;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.todoCheckbox:hover {
+  border-color: var(--Item-hover);
+}
+
+.todoInfo {
+  @apply flex flex-col;
+}
+
+.todoTask {
+  @apply text-sm font-medium;
+  color: var(--color-text);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.todoDeadline {
+  @apply text-xs;
+  color: var(--color-text-secondary);
+  font-family: 'Source Code Pro', monospace;
+}
+
+/* 공통 버튼 스타일 */
+.addButton {
+  @apply w-full py-2 rounded-lg text-sm font-medium transition-all duration-200;
+  background-color: var(--theme-blue-10);
+  color: var(--color-text);
+  border: 1px solid var(--theme-blue-20);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.addButton:hover {
+  background-color: var(--theme-blue-20);
+  border-color: var(--theme-blue-30);
+  transform: translateY(-1px);
+}
+
+/* 스크롤바 스타일 */
+.projectList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.projectList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.projectList::-webkit-scrollbar-thumb {
+  @apply rounded-full;
+  background-color: var(--theme-blue-20);
+}
+
+.projectList::-webkit-scrollbar-thumb:hover {
+  background-color: var(--theme-blue-30);
+}
+
+/* 알림 리스트 스타일 */
+.notificationList {
+  @apply space-y-3;
+  max-height: calc(100vh - 400px);
+  overflow-y: auto;
+  mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+}
+
+.notificationItem {
+  @apply flex items-start space-x-3 p-3 rounded-lg transition-all duration-200;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.notificationItem:hover {
+  background-color: var(--theme-blue-10);
+  border-color: var(--theme-blue-20);
+}
+
+.notificationTime {
+  @apply flex items-center space-x-1.5 px-2 py-1 rounded-lg text-xs;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--color-text-secondary);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.notificationContent {
+  @apply flex flex-col flex-1;
+}
+
+.notificationTitle {
+  @apply text-sm font-medium;
+  color: var(--color-text);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.notificationDescription {
+  @apply text-xs mt-0.5;
+  color: var(--color-text-secondary);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.cardCount {
+  @apply inline-flex items-center justify-center w-6 h-6 mr-2 text-sm rounded-lg;
+  background-color: var(--theme-blue);
+  color: var(--color-text);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.projectList:not(:hover) .projectItem:nth-child(n+4) .projectName,
+.projectList:not(:hover) .projectItem:nth-child(n+4) .progressText,
+.projectList:not(:hover) .projectItem:nth-child(n+4) .progressBar {
+  opacity: 0.5;
+}
+
+.projectList:hover .projectName,
+.projectList:hover .progressText,
+.projectList:hover .progressBar {
+  opacity: 1;
+}
+
+.notificationProject {
+  @apply text-xs;
+  color: var(--theme-blue);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.todoProject {
+  @apply text-xs block;
+  color: var(--theme-blue);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.todoInfo {
+  @apply flex flex-col;
+}
+
+.todoTask {
+  @apply text-sm font-medium;
+  color: var(--color-text);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.todoDeadline {
+  @apply text-xs mt-0.5;
+  color: var(--color-text-secondary);
+  font-family: 'Source Code Pro', monospace;
+}
+
+/* 리뷰 리스트 스타일 */
+.reviewList {
+  @apply space-y-3;
+}
+
+.reviewItem {
+  @apply p-3 rounded-lg transition-all duration-200;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.reviewItem:hover {
+  background-color: var(--theme-blue-10);
+  border-color: var(--theme-blue-20);
+}
+
+.reviewHeader {
+  @apply flex items-center justify-between mb-2;
+}
+
+.reviewType {
+  @apply text-lg;
+}
+
+.reviewStatus {
+  @apply px-2 py-0.5 rounded-lg text-xs font-medium;
+  color: var(--color-text);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.reviewInfo {
+  @apply flex flex-col;
+}
+
+.reviewTitle {
+  @apply text-sm font-medium mb-1;
+  color: var(--color-text);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.reviewProject {
+  @apply text-xs mb-2;
+  color: var(--theme-blue);
+  font-family: 'Source Code Pro', monospace;
+}
+
+.reviewMeta {
+  @apply flex items-center space-x-3;
+}
+
+.reviewDeadline, .reviewReviewer {
+  @apply flex items-center space-x-1 text-xs;
+  color: var(--color-text-secondary);
+  font-family: 'Source Code Pro', monospace;
+}
+ 

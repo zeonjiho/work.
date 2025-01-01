@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+    /* 색상 변수 */
+    --color-primary: #000000;
+    --color-primary-hover: #1f2937;
+    --color-text: #ffffff;
+    --color-text-secondary: #6b7280;
+    --color-border: #e5e7eb;
+    --button-color: #00000088;
+    --button-hover-color: #002aff;
+    /* 레이아웃 변수 */
+    --max-width: 80rem;
+    --nav-height: 4rem;
+    /* 기본 패딩 */
+    --padding-x: 1rem;
+    --padding-y: 4rem;
+}
+
+@media (min-width: 640px) {
+     :root {
+        --padding-x: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+     :root {
+        --padding-x: 2rem;
+    }
+}
+
+body {
+    color: var(--color-text);
+    background-color: var(--color-primary);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--padding-x);
+}

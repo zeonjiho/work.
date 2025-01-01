@@ -1,0 +1,20 @@
+.greeting {
+  @apply text-2xl font-bold;
+  color: var(--color-text);
+}
+
+.username {
+  @apply font-semibold;
+  color: var(--button-hover-color);
+}
+
+.greetingWrapper {
+  @apply flex flex-col gap-1;
+
+}
+
+.subtitle {
+  @apply text-sm;
+  color: var(--color-text-secondary);
+  
+} 

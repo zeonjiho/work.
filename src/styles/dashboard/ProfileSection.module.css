@@ -1,0 +1,63 @@
+.profileButton {
+  @apply flex items-center space-x-3 px-4 py-2 rounded-xl transition-all duration-200;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(60px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text);
+}
+
+.profileButton:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.avatar {
+  @apply w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold;
+  background-color: var(--button-hover-color);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  @apply mt-2 w-56 rounded-xl shadow-lg;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(60px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform-origin: top right;
+  animation: dropdownAnimation 0.2s ease-out;
+  z-index: 9999;
+}
+
+.dropdownItem {
+  @apply flex items-center space-x-2 w-full px-4 py-3 text-left transition-all duration-150;
+  color: var(--color-text);
+}
+
+.dropdownItem:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.logoutButton {
+  color: #ff4444;
+}
+
+.logoutButton:hover {
+  background-color: rgba(255, 68, 68, 0.1);
+}
+
+@keyframes dropdownAnimation {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.profileContainer {
+  position: relative;
+  display: inline-block;
+} 
